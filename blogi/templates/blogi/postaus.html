@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>{{postaus.otsikko}}</title>
+    </head>
+    <body>
+        <div style="text-shadow: 2px 2px 4px #ecb8b8;
+        background-color: antiquewhite;
+        box-shadow: 2px 2px 3px #d6a6a6;
+        ">
+            <h1>Koodausblogi - Postaus</h1>
+        </div>
+    </body>
+    <body>
+        <h2>{{postaus.otsikko}}</h2>    
+        <p>
+            {{postaus.teksti}}
+        </p>
+        <a href="{% url 'postauslista' %}">Postaukset</a>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Koodausblogi</title>
+    </head>
+
+    <body>
+        <div style="text-shadow: 2px 2px 4px #ecb8b8;
+        background-color: antiquewhite;
+        padding-left: 3px;
+        padding-right: 3px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px #d6a6a6;
+        ">
+            <h1>Koodausblogi - Postaukset</h1>
+            <a href="{% url 'admin:index' %}">Django Admin</a>
+            <br/>
+            <a href="{% url 'uusi_postaus' %}">Uusi postaus</a>
+            <hr/>
+        </div>
+    </body>
+    <body>
+        <ul>
+            {% for postaus in postaukset %}
+                <li>
+                    <a href="{% url 'nayta_postaus' postaus.id %}">{{postaus}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

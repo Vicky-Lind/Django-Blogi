@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>{{postaus.otsikko}}</title>
+    </head>
+    <body>
+        <div style="text-shadow: 2px 2px 4px #ecb8b8;
+        background-color: antiquewhite;
+        box-shadow: 2px 2px 3px #d6a6a6;
+        ">
+            <h1>Koodausblogi - Luo uusi postaus</h1>
+        </div>
+    </body>
+    <body>
+        <div style="text-shadow: 2px 2px 4px #ecb8b8;
+        background-color: antiquewhite;
+        box-shadow: 2px 2px 3px #d6a6a6;
+        ">
+            <h2>Luo uusi postaus</h2>
+        </div>
+    <body>
+        <a href="{% url 'postauslista' %}">Postaukset</a>
+        <form method="post">
+            {% csrf_token %}
+            <label>
+                Otsikko
+                <input name="otsikko"/>
+            </label>
+            <br/>
+            <label>
+                Teksti
+                <textarea name="teksti"></textarea>
+            </label>
+            <br/>
+            <button type="submit">Lähetä</button>
+        </form>
+    </body>
+</html>
+</html>
