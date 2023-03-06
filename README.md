@@ -1,5 +1,5 @@
-# django-harjoitus-01-2023
-Django harjoittelua
+# Django-harjoitus 2023 tammi-maaliskuu
+Django harjoittelua alkuvuodesta 2023
 
 
 ## Asennus
@@ -20,4 +20,27 @@ Django harjoittelua
     ```
     pip install -r requirements.txt
     ```
-    
+4. Aja migraatiot tietokantaan:
+    ```
+    python manage.py migrate
+    ```
+    - Tämä luo SQLite-tietokannan
+    'db.sqlite3'-tiedostoon
+5. Luo pääkäyttäjä:
+    ```
+    python manage.py createsuperuser
+    ```
+
+## Kehitysympäristön käynnistäminen
+
+Aja Djangon runserver komento:
+```
+python manage.py runserver
+```
+
+## Uusien migraatiotiedostojen tekeminen
+
+Kun teet muutoksia models.py-tiedostoon, niin model-muutokset pitää saada myös tietokantaan. Tähän käytetään migraatiotiedostoja. Tehtyjen muutosten pohjalta voi luoda uuden migraatiotiedoston komennolla:
+```
+python manage.py makemigrations
+```
