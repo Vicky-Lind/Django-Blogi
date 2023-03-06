@@ -7,5 +7,10 @@
 <p>
     {{postaus.teksti}}
 </p>
+
+{# if post has an image, show it #}
+{% if postaus.kuva %}
+<img src="{{postaus.kuva.url}}" class="img-fluid"/>
+{% endif %}
 <br/>
 {% endblock %}
