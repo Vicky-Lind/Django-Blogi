@@ -9,7 +9,7 @@ def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'koodausblogi.settings')
     django.setup()
 
-    username = os.environ.get('ADMIN_USER_NAME', 'admin')
+    username = os.environ.get('ADMIN_USER_NAME', 'adminDaReal')
     password = os.environ['ADMIN_USER_PASSWORD']
     email = os.environ.get('ADMIN_USER_EMAIL', '')
 
