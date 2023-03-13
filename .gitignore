@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 /media
+
+# Staticfiles-kansio ja sen sisältö
+/staticfiles
