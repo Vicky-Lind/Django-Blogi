@@ -1,16 +1,32 @@
-{% extends "blogi/base.html" %}
+{% extends "blogi/base.html" %} {% block content %}
 
-{% block content %}
-<h1>{{postaus.otsikko}}</h1>  
-<p>{{postaus.luotu}}</p>
-<br/>  
-<p>
-    {{postaus.teksti}}
-</p>
+<div
+	class="container"
+	style="
+		background: rgba(255, 255, 255, 0.49);
+		border-radius: 16px;
+		box-shadow: 0 4px 17px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(9.1px);
+		-webkit-backdrop-filter: blur(9.1px);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 3rem;
+	">
+    <div class="container">
+        <h1>{{postaus.otsikko}}</h1>
+        <p>{{postaus.luotu}}</p>
+    </div>
+	<br />
+    
+    <div class="container">
+        {% if postaus.ingressi %}
+        <p>{{postaus.ingressi}}</p>
+        </br>
+        {% endif %}
+        <p>{{postaus.teksti}}</p>
+        {# if post has an image, show it #} {% if postaus.kuva %}
+        <img src="{{postaus.kuva.url}}" class="img-fluid" style="height:400px; width:400px; object-fit: cover;"/>
+        {% endif %}
+    </div>
+</div>
 
-{# if post has an image, show it #}
-{% if postaus.kuva %}
-<img src="{{postaus.kuva.url}}" class="img-fluid"/>
-{% endif %}
-<br/>
 {% endblock %}
