@@ -134,5 +134,6 @@ dmypy.json
 /staticfiles
 
 *.jpeg
+*.jpg 
 
 koodausblogi\urls.py
