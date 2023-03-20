@@ -132,6 +132,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # and creating unique names for each version so they can safely be cached forever.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Use DropBox as storage if DROPBOX_APP_KEY is set 
+DROPBOX_APP_KEY = os.environ.get('DROPBOX_APP_KEY')
+if DROPBOX_APP_KEY:
+    DROPBOX_APP_SECRET = os.environ['DROPBOX_APP_SECRET']
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN']
+    DROPBOX_OAUTH2_REFRESH_TOKEN = os.environ['DROPBOX_OAUTH2_REFRESH_TOKEN']
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
