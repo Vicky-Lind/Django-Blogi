@@ -136,4 +136,4 @@ dmypy.json
 *.jpeg
 *.jpg 
 
-koodausblogi\urls.py
+koodausblogi/urls.py
