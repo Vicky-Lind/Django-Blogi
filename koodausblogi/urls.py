@@ -22,7 +22,7 @@ from blogi import views as blogi_views
 
 def trigger_error(request):
     division_by_zero = 1 / 0
-    
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blogi_views.postaukset, name="postauslista"),
