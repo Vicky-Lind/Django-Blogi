@@ -132,3 +132,7 @@ dmypy.json
 
 # Staticfiles-kansio ja sen sisältö
 /staticfiles
+
+*.jpeg
+
+koodausblogi\urls.py
