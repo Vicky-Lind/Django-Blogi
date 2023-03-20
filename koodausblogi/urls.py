@@ -20,10 +20,13 @@ from django.conf.urls.static import static
 
 from blogi import views as blogi_views
 
-
+def trigger_error(request):
+    division_by_zero = 1 / 0
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blogi_views.postaukset, name="postauslista"),
     path('postaus/<int:id>', blogi_views.nayta_postaus, name="nayta_postaus"),
     path('uusi/', blogi_views.uusi_postaus, name="uusi_postaus"),
+    path('sentry-debug/', trigger_error),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
