@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Postaus(models.Model):
     otsikko = models.CharField(max_length=200)
+    otsikko_lower = models.CharField(max_length=200, help_text="Exact same as normal title but in lowercase", null=True)
     ingressi = models.TextField(blank=True)
     teksti = models.TextField()
     kuva = models.ImageField(upload_to="blogi/kuvat", null=True, blank=True)

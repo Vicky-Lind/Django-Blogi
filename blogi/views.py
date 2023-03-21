@@ -9,12 +9,12 @@ def search_post(request):
     if request.method == "POST":
         searched = request.POST['searched']
         posts = Postaus.objects.filter(otsikko__contains=searched)
-
-
+        posts_lower = Postaus.objects.filter(otsikko_lower__contains=searched)
+        
         return render(
             request,
             "blogi/search_post.html",
-            {'searched': searched, 'posts': posts}
+            {'searched': searched, 'posts': posts, 'posts_lower': posts_lower}
         )
     else:
         return render(
