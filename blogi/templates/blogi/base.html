@@ -16,33 +16,35 @@
     </head>
     <body>
         {# Navbar #}
-        <nav class="navbar navbar-expand-md bg-primary navbar-dark pt-1 pd-0">
+        <nav class="navbar navbar-expand-md bg-primary navbar-dark pt-1 pd-0" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
             <div class="container-fluid">
                 <a class="navbar-brand fw-semibold" href="{% url 'postauslista' %}">
                     <img src="{% static 'favicon.ico' %}" alt="CodeBlog" width="50" height="50" class="d-inline-block align-text-middle">
                     CodeBlog
                 </a>
-                {% comment %} <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> {% endcomment %}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active"
-                              aria-current="page"
-                              href="{% url 'postauslista' %}">Home</a>
-                    </a>
+                            aria-current="page"
+                            href="{% url 'postauslista' %}">Home</a>
+                        </a>
                     </li>
                     {% comment %} <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Toiminnot
-                    </a> {% endcomment %}
-                    {% comment %} <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'uusi_postaus' %}">Uusi postaus</a></li>
-                    </ul> {% endcomment %}
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Toiminnot
+                        </a> {% endcomment %}
+                        {% comment %} <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'uusi_postaus' %}">Uusi postaus</a></li>
+                        </ul> {% endcomment %}
                     </li>
                 </ul>
+                <form class="d-flex" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);" method=POST action="{% url 'search_post' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-0" type="search" placeholder="Search for..." aria-label="Search" style="background: #fffff; box-shadow: none;
+                    border:none; border-top-right-radius:0;border-bottom-right-radius:0;" name="searched">
+                    <button class="btn bg-warning" type="submit" style="border-top-left-radius:0;border-bottom-left-radius:0; ">Search</button>
+                </form>
                 </div>
             </div>
         </nav>

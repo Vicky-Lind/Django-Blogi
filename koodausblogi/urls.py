@@ -29,4 +29,5 @@ urlpatterns = [
     path('postaus/<int:id>', blogi_views.nayta_postaus, name="nayta_postaus"),
     # path('uusi/', blogi_views.uusi_postaus, name="uusi_postaus"),
     path('sentry-debug/', trigger_error),
+    path('search-post', blogi_views.search_post, name="search_post"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,6 +5,23 @@ from django.urls import reverse
 from .models import Postaus
 # Create your views here.
 
+def search_post(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        posts = Postaus.objects.filter(otsikko__contains=searched)
+
+
+        return render(
+            request,
+            "blogi/search_post.html",
+            {'searched': searched, 'posts': posts}
+        )
+    else:
+        return render(
+            request,
+            "blogi/search_post.html",
+        )
+
 def postaukset(request):
     postaukset = Postaus.objects.all()
     context = {"postaukset": postaukset}
