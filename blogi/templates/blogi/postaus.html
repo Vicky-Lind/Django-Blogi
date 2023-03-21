@@ -17,12 +17,12 @@
     </div>
 	<br />
     
-    <div class="container">
+    <div class="container-sm" width="10px">
         {% if postaus.ingressi %}
-        <p>{{postaus.ingressi}}</p>
+        <p>{{postaus.ingressi|linebreaks}}</p>
         </br>
         {% endif %}
-        <p>{{postaus.teksti}}</p>
+        <p>{{postaus.teksti|linebreaks}}</p>
         {# if post has an image, show it #} {% if postaus.kuva %}
         <img src="{{postaus.kuva.url}}" class="img-fluid" style="height:400px; width:400px; object-fit: cover;"/>
         {% endif %}
