@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 {# Tells browsers that this is html, prevent them from going in "quirks"-mode #}
 <html lang="fi">
     <head>
@@ -6,8 +7,7 @@
         {# viewport is for mobile devices #}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}CodeBlog{% endblock%}</title>
-        {% load static %}
-        <link rel="icon" href="{% static '.ico' %}"/>
+        <link rel="icon" href="{% static 'favicon.ico' %}"/>
         {# Link to Bootstrap #}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md bg-primary navbar-dark pt-1 pd-0">
             <div class="container-fluid">
                 <a class="navbar-brand fw-semibold" href="{% url 'postauslista' %}">
-                    <img src="{% static '.ico' %}" alt="CodeBlog" width="50" height="50" class="d-inline-block align-text-middle">
+                    <img src="{% static 'favicon.ico' %}" alt="CodeBlog" width="50" height="50" class="d-inline-block align-text-middle">
                     CodeBlog
                 </a>
                 {% comment %} <form class="d-flex" role="search">
