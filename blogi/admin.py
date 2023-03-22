@@ -2,8 +2,6 @@ from django.contrib import admin
 
 from .models import Postaus
 
-# Register your models here.
-
 #This makes it so that the admin page shows the Postaus model
 #specifically the @admin.register(Postaus) part
 @admin.register(Postaus)

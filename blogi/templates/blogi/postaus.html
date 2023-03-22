@@ -1,6 +1,6 @@
 {% extends "blogi/base.html" %}
 {% block content %}
-{# Page that shows  #}
+{# Page that shows a full post #}
 <div class="container"
 	style="
 		background: rgba(255, 255, 255, 0.49);
@@ -14,18 +14,19 @@
         <h1>{{postaus.otsikko}}</h1>
         <p>{{postaus.luotu}}</p>
     </div>
-	<br />
-    
+	<br/>
     <div class="container-sm" width="10px">
         {% if postaus.ingressi %}
+        {# Linebreaks are to show the line breaks #}
         <p>{{postaus.ingressi|linebreaks}}</p>
         </br>
         {% endif %}
         <p>{{postaus.teksti|linebreaks}}</p>
-        {# if post has an image, show it #} {% if postaus.kuva %}
+        {# if post has an image, show it #}
+        {% if postaus.kuva %}
+        {# Object-fit: cover; makes the image fit to the size it's been given↓ #}
         <img src="{{postaus.kuva.url}}" class="img-fluid" style="height:400px; width:400px; object-fit: cover;"/>
         {% endif %}
     </div>
 </div>
-
 {% endblock %}

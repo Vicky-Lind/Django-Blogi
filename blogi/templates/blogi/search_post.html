@@ -1,30 +1,32 @@
 {% extends "blogi/base.html" %}
 {% load static %}
 {% block content %}
+{# This is the page you get directed to when clicking "search" #}
+    {# If something is in the search input: #}
     {% if searched %}
         <h1>Results for {{searched}}</h1>
+        {# Check how many posts that match the input there are #}
+        {# If there are some that match the post then #}
         {% if posts.count > 0 %}
             <p>{{posts.count}} results</p>
+        {# Or, if there is a post in lowercase that matches, then #}
         {% elif posts_lower.count > 0 and posts.count == 0%}
-            <p>{{posts_total}} results</p>
+            <p>{{posts_total.count}} results</p>
         {% endif %}
         <br/>
+        {# If there were any that match #}
         {% if posts.count > 0 %}
-        <div
-            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
             {% for post in posts %}
             <div class="col">
-                <div
-                    class="card"
+                <div class="card"
                     style="
                         border-radius: 16px;
                         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                        border: 1px solid rgba(255, 255, 255, 0.3);
-                    ">
+                        border: 1px solid rgba(255, 255, 255, 0.3);">
                     <a href="{% url 'nayta_postaus' post.id %}">
                         {% if post.kuva %}
-                        <img
-                            src="{{post.kuva.url}}"
+                        <img src="{{post.kuva.url}}"
                             class="card-img-top"
                             alt=""
                             style="
@@ -32,11 +34,9 @@
                                 height: 12em;
                                 object-fit: cover;
                                 border-top-left-radius: 16px;
-                                border-top-right-radius: 16px;
-                            " />
+                                border-top-right-radius: 16px;"/>
                         {% else %}
-                        <img
-                            src="{% static 'blogi/ei-kuvaa.svg' %}"
+                        <img src="{% static 'blogi/ei-kuvaa.svg' %}"
                             class="card-img-top"
                             alt=""
                             style="
@@ -44,48 +44,41 @@
                                 height: 12em;
                                 object-fit: cover;
                                 border-top-radius: 16px;
-                                border-top-right-radius: 16px;
-                            " />
+                                border-top-right-radius: 16px;"/>
                         {% endif %}
                     </a>
                     <div class="card-body">
-                        <h5
-                            class="card-title"
+                        <h5 class="card-title"
                             style="
                                 white-space: nowrap;
                                 overflow: hidden;
-                                text-overflow: ellipsis;
-                            ">
+                                text-overflow: ellipsis;">
                             {{post.otsikko}}
                         </h5>
-                        <p
-                            class="card-text"
+                        <p class="card-text"
                             style="height: 8em; overflow: hidden; text-overflow: ellipsis">
-                            {{post.ingressi}}
+                            {{post.luo_ingressi}}
                         </p>
-                        <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
-                            >Read</a
-                        >
+                        <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary">
+                            Read
+                        </a>
                     </div>
                 </div>
             </div>
             {% endfor %}
+            {# Else, if there are any lowercase posts that match #}
             {% elif posts_lower.count > 0 %}
-            <div
-                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
                 {% for post in posts_lower %}
                 <div class="col">
-                    <div
-                        class="card"
+                    <div class="card"
                         style="
                             border-radius: 16px;
                             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                            border: 1px solid rgba(255, 255, 255, 0.3);
-                        ">
+                            border: 1px solid rgba(255, 255, 255, 0.3);">
                         <a href="{% url 'nayta_postaus' post.id %}">
                             {% if post.kuva %}
-                            <img
-                                src="{{post.kuva.url}}"
+                            <img src="{{post.kuva.url}}"
                                 class="card-img-top"
                                 alt=""
                                 style="
@@ -93,11 +86,9 @@
                                     height: 12em;
                                     object-fit: cover;
                                     border-top-left-radius: 16px;
-                                    border-top-right-radius: 16px;
-                                " />
+                                    border-top-right-radius: 16px;"/>
                             {% else %}
-                            <img
-                                src="{% static 'blogi/ei-kuvaa.svg' %}"
+                            <img src="{% static 'blogi/ei-kuvaa.svg' %}"
                                 class="card-img-top"
                                 alt=""
                                 style="
@@ -105,37 +96,34 @@
                                     height: 12em;
                                     object-fit: cover;
                                     border-top-radius: 16px;
-                                    border-top-right-radius: 16px;
-                                " />
+                                    border-top-right-radius: 16px;"/>
                             {% endif %}
                         </a>
                         <div class="card-body">
-                            <h5
-                                class="card-title"
+                            <h5 class="card-title"
                                 style="
                                     white-space: nowrap;
                                     overflow: hidden;
-                                    text-overflow: ellipsis;
-                                ">
+                                    text-overflow: ellipsis;">
                                 {{post.otsikko}}
                             </h5>
-                            <p
-                                class="card-text"
+                            <p class="card-text"
                                 style="height: 8em; overflow: hidden; text-overflow: ellipsis">
-                                {{post.ingressi}}
+                                {{post.luo_ingressi}}
                             </p>
-                            <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
-                                >Read</a
-                            >
+                            <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary">
+                                Read
+                            </a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+            {# Else, if there were no posts that matched #}
             {% else %}
             <h3>We couldn't find anything that matches your search..</h3>
             {% endif %}
+    {# Else, if there was no input #}
     {% else %}
     <h2>Hey! Looks like you didn't search for anything...</h2>
     {% endif %}
-
 {% endblock %}

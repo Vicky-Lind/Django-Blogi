@@ -1,10 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from .models import Postaus
-# Create your views here.
 
+# This is the search post view which returns to us-
+# what search term user have input, posts that match-
+# the given input, the same posts but in lowercase that match-
+# the given input, and the total amount of posts that matched
 def search_post(request):
     if request.method == "POST":
         searched = request.POST['searched']
@@ -22,6 +24,7 @@ def search_post(request):
             "blogi/search_post.html",
         )
 
+# All the posts
 def postaukset(request):
     postaukset = Postaus.objects.all()
     context = {"postaukset": postaukset}
@@ -31,7 +34,7 @@ def postaukset(request):
         context,
     )
 
-
+# Full post
 def nayta_postaus(request, id):
     postaus = Postaus.objects.get(id=id)
     context = {"postaus": postaus}
