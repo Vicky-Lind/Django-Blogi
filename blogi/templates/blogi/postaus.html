@@ -1,7 +1,7 @@
-{% extends "blogi/base.html" %} {% block content %}
-
-<div
-	class="container"
+{% extends "blogi/base.html" %}
+{% block content %}
+{# Page that shows  #}
+<div class="container"
 	style="
 		background: rgba(255, 255, 255, 0.49);
 		border-radius: 16px;
@@ -9,8 +9,7 @@
 		backdrop-filter: blur(9.1px);
 		-webkit-backdrop-filter: blur(9.1px);
 		border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 3rem;
-	">
+        padding: 3rem;">
     <div class="container">
         <h1>{{postaus.otsikko}}</h1>
         <p>{{postaus.luotu}}</p>

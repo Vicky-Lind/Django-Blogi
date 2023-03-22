@@ -20,14 +20,15 @@ from django.conf.urls.static import static
 
 from blogi import views as blogi_views
 
-def trigger_error(request):
-    division_by_zero = 1 / 0
+# This was for activating sentry.io (error & user tracking)
+# def trigger_error(request):      activates an error for sentry-
+#     division_by_zero = 1 / 0      -to identify
 
 urlpatterns = [
     path('django-admin-hallinto/', admin.site.urls),
     path('', blogi_views.postaukset, name="postauslista"),
     path('postaus/<int:id>', blogi_views.nayta_postaus, name="nayta_postaus"),
     # path('uusi/', blogi_views.uusi_postaus, name="uusi_postaus"),
-    path('sentry-debug/', trigger_error),
+    # path('sentry-debug/', trigger_error),
     path('search-post', blogi_views.search_post, name="search_post"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

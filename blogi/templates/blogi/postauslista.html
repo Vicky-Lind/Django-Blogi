@@ -1,6 +1,5 @@
 {% extends "blogi/base.html" %} {% load static %} {% block content %}
 <h1>Posts</h1>
-
 <div
 	class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
 	{% for postaus in postaukset %}
@@ -52,7 +51,7 @@
 				<p
 					class="card-text"
 					style="height: 8em; overflow: hidden; text-overflow: ellipsis">
-					{{postaus.luo_ingressi}}
+					{{postaus.ingressi}}
 				</p>
 				<a href="{% url 'nayta_postaus' postaus.id %}" class="btn btn-primary"
 					>Read</a
