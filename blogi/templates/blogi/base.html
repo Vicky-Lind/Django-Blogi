@@ -16,19 +16,26 @@
     </head>
     <body>
         {# Navbar #}
-        <nav class="navbar navbar-expand-md bg-primary navbar-dark pt-1 pd-0" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <nav class="navbar sticky-top navbar-expand-sm navbar-dark pt-1 pd-0" style="background-color: #0B5394; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
             <div class="container-fluid">
                 <a class="navbar-brand fw-semibold" href="{% url 'postauslista' %}">
                     <img src="{% static 'favicon.ico' %}" alt="CodeBlog" width="50" height="50" class="d-inline-block align-text-middle">
                     CodeBlog
                 </a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <button class="navbar-toggler collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#codeblog-toggle-nav"
+                    aria-expanded="false" style="border-color: white;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="codeblog-toggle-nav" style="text-align: center;">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active"
                             aria-current="page"
-                            href="{% url 'postauslista' %}">Home</a>
-                        </a>
+                            href="{% url 'postauslista' %}">Home
+                            </a>
                     </li>
                     {% comment %} <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

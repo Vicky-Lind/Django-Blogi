@@ -1,5 +1,5 @@
 {% extends "blogi/base.html" %} {% load static %} {% block content %}
-<h1>Postaukset</h1>
+<h1>Posts</h1>
 
 <div
 	class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
@@ -55,7 +55,7 @@
 					{{postaus.luo_ingressi}}
 				</p>
 				<a href="{% url 'nayta_postaus' postaus.id %}" class="btn btn-primary"
-					>Lue</a
+					>Read</a
 				>
 			</div>
 		</div>
