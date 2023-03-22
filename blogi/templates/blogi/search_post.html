@@ -11,7 +11,7 @@
             <p>{{posts.count}} results</p>
         {# Or, if there is a post in lowercase that matches, then #}
         {% elif posts_lower.count > 0 and posts.count == 0%}
-            <p>{{posts_total.count}} results</p>
+            <p>{{posts_lower.count}} results</p>
         {% endif %}
         <br/>
         {# If there were any that match #}
