@@ -10,11 +10,11 @@ def search_post(request):
         searched = request.POST['searched']
         posts = Postaus.objects.filter(otsikko__contains=searched)
         posts_lower = Postaus.objects.filter(otsikko_lower__contains=searched)
-        
+        posts_total = (len(posts)+(len(posts_lower)))
         return render(
             request,
             "blogi/search_post.html",
-            {'searched': searched, 'posts': posts, 'posts_lower': posts_lower}
+            {'searched': searched, 'posts': posts, 'posts_lower': posts_lower, 'posts_total': posts_total}
         )
     else:
         return render(
