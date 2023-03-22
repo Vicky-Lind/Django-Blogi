@@ -4,7 +4,7 @@
 {# This is the page you get directed to when clicking "search" #}
     {# If something is in the search input: #}
     {% if searched %}
-        <h1>Results for {{searched}}</h1>
+        <h1>Results for "{{searched}}"</h1>
         {# Check how many posts that match the input there are #}
         {# If there are some that match the post then #}
         {% if posts.count > 0 %}
