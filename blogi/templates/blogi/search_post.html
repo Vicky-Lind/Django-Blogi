@@ -3,7 +3,11 @@
 {% block content %}
     {% if searched %}
         <h1>Results for {{searched}}</h1>
-        <p>{{posts_total}} results</p>
+        {% if posts.count > 0 %}
+            <p>{{posts.count}} results</p>
+        {% elif posts_lower.count > 0 and posts.count == 0%}
+            <p>{{posts_total}} results</p>
+        {% endif %}
         <br/>
         {% if posts.count > 0 %}
         <div
