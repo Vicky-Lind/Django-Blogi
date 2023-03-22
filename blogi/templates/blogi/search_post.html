@@ -2,130 +2,134 @@
 {% load static %}
 {% block content %}
     {% if searched %}
-    <h1>Results for {{searched}}</h1>
-    <p>{{posts_total}} results</p>
-    <br/>
-    <div
-        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
-        {% for post in posts %}
-        <div class="col">
-            <div
-                class="card"
-                style="
-                    border-radius: 16px;
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                ">
-                <a href="{% url 'nayta_postaus' post.id %}">
-                    {% if post.kuva %}
-                    <img
-                        src="{{post.kuva.url}}"
-                        class="card-img-top"
-                        alt=""
-                        style="
-                            width: 100%;
-                            height: 12em;
-                            object-fit: cover;
-                            border-top-left-radius: 16px;
-                            border-top-right-radius: 16px;
-                        " />
-                    {% else %}
-                    <img
-                        src="{% static 'blogi/ei-kuvaa.svg' %}"
-                        class="card-img-top"
-                        alt=""
-                        style="
-                            width: 100%;
-                            height: 12em;
-                            object-fit: cover;
-                            border-top-radius: 16px;
-                            border-top-right-radius: 16px;
-                        " />
-                    {% endif %}
-                </a>
-                <div class="card-body">
-                    <h5
-                        class="card-title"
-                        style="
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        ">
-                        {{post.otsikko}}
-                    </h5>
-                    <p
-                        class="card-text"
-                        style="height: 8em; overflow: hidden; text-overflow: ellipsis">
-                        {{post.ingressi}}
-                    </p>
-                    <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
-                        >Lue</a
-                    >
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        <h1>Results for {{searched}}</h1>
+        <p>{{posts_total}} results</p>
+        <br/>
+        {% if posts.count > 0 %}
         <div
-        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
-        {% for post in posts_lower %}
-        <div class="col">
-            <div
-                class="card"
-                style="
-                    border-radius: 16px;
-                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                ">
-                <a href="{% url 'nayta_postaus' post.id %}">
-                    {% if post.kuva %}
-                    <img
-                        src="{{post.kuva.url}}"
-                        class="card-img-top"
-                        alt=""
-                        style="
-                            width: 100%;
-                            height: 12em;
-                            object-fit: cover;
-                            border-top-left-radius: 16px;
-                            border-top-right-radius: 16px;
-                        " />
-                    {% else %}
-                    <img
-                        src="{% static 'blogi/ei-kuvaa.svg' %}"
-                        class="card-img-top"
-                        alt=""
-                        style="
-                            width: 100%;
-                            height: 12em;
-                            object-fit: cover;
-                            border-top-radius: 16px;
-                            border-top-right-radius: 16px;
-                        " />
-                    {% endif %}
-                </a>
-                <div class="card-body">
-                    <h5
-                        class="card-title"
-                        style="
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        ">
-                        {{post.otsikko}}
-                    </h5>
-                    <p
-                        class="card-text"
-                        style="height: 8em; overflow: hidden; text-overflow: ellipsis">
-                        {{post.ingressi}}
-                    </p>
-                    <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
-                        >Lue</a
-                    >
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
+            {% for post in posts %}
+            <div class="col">
+                <div
+                    class="card"
+                    style="
+                        border-radius: 16px;
+                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                        border: 1px solid rgba(255, 255, 255, 0.3);
+                    ">
+                    <a href="{% url 'nayta_postaus' post.id %}">
+                        {% if post.kuva %}
+                        <img
+                            src="{{post.kuva.url}}"
+                            class="card-img-top"
+                            alt=""
+                            style="
+                                width: 100%;
+                                height: 12em;
+                                object-fit: cover;
+                                border-top-left-radius: 16px;
+                                border-top-right-radius: 16px;
+                            " />
+                        {% else %}
+                        <img
+                            src="{% static 'blogi/ei-kuvaa.svg' %}"
+                            class="card-img-top"
+                            alt=""
+                            style="
+                                width: 100%;
+                                height: 12em;
+                                object-fit: cover;
+                                border-top-radius: 16px;
+                                border-top-right-radius: 16px;
+                            " />
+                        {% endif %}
+                    </a>
+                    <div class="card-body">
+                        <h5
+                            class="card-title"
+                            style="
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            ">
+                            {{post.otsikko}}
+                        </h5>
+                        <p
+                            class="card-text"
+                            style="height: 8em; overflow: hidden; text-overflow: ellipsis">
+                            {{post.ingressi}}
+                        </p>
+                        <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
+                            >Lue</a
+                        >
+                    </div>
                 </div>
             </div>
-        </div>
-        {% endfor %}
-    
+            {% endfor %}
+            {% elif posts_lower.count > 0 %}
+            <div
+                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-xl-4">
+                {% for post in posts_lower %}
+                <div class="col">
+                    <div
+                        class="card"
+                        style="
+                            border-radius: 16px;
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                        ">
+                        <a href="{% url 'nayta_postaus' post.id %}">
+                            {% if post.kuva %}
+                            <img
+                                src="{{post.kuva.url}}"
+                                class="card-img-top"
+                                alt=""
+                                style="
+                                    width: 100%;
+                                    height: 12em;
+                                    object-fit: cover;
+                                    border-top-left-radius: 16px;
+                                    border-top-right-radius: 16px;
+                                " />
+                            {% else %}
+                            <img
+                                src="{% static 'blogi/ei-kuvaa.svg' %}"
+                                class="card-img-top"
+                                alt=""
+                                style="
+                                    width: 100%;
+                                    height: 12em;
+                                    object-fit: cover;
+                                    border-top-radius: 16px;
+                                    border-top-right-radius: 16px;
+                                " />
+                            {% endif %}
+                        </a>
+                        <div class="card-body">
+                            <h5
+                                class="card-title"
+                                style="
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                ">
+                                {{post.otsikko}}
+                            </h5>
+                            <p
+                                class="card-text"
+                                style="height: 8em; overflow: hidden; text-overflow: ellipsis">
+                                {{post.ingressi}}
+                            </p>
+                            <a href="{% url 'nayta_postaus' post.id %}" class="btn btn-primary"
+                                >Lue</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <h3>We couldn't find anything that matches your search..</h3>
+            {% endif %}
     {% else %}
     <h2>Hey! Looks like you didn't search for anything...</h2>
     {% endif %}
